@@ -1,0 +1,122 @@
+
+</head>
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"
+integrity="sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=="
+crossorigin="anonymous"
+referrerpolicy="no-referrer"
+></script>
+</head>
+<!-- <link rel="stylesheet" href="style.css"> -->
+
+<!-- Ask question  -->
+<button
+  data-toggle="popover"
+  data-trigger="focus"
+  title="Ask Question Related PSL"
+  data-content="And here's some amazing content. It's very engaging. Right?"
+  id="openModal"
+  class="fadeInLeft fixed bottom-4 right-4 bg-black text-white p-2 rounded-full animate-pulse transition duration-300 transform hover:scale-105"
+>
+  <i class="fas fa-robot fa-2x"></i>
+  
+</button>
+
+<!-- Bubble animation -->
+
+<div
+  id="modal"
+  class="zoomIn hidden fixed inset-0 bg-gray-900 bg-opacity-75   flex justify-center items-center"
+>
+  <div class="max-w-md mx-auto bg-white sm:p-6 md:p-8 rounded-2  shadow-md">
+    <h1 class="text-green-800 text-2xl md:text-3xl font-bold mb-4">
+      Ask Questions related to PSL Players & Teams
+    </h1>
+    <form action="/googleai" method="POST" class="mb-6">
+
+      <div class="mt-4 flex items-center">
+        <input
+        type="text"
+        id="prompt"
+        name="prompt"
+        required
+        placeholder="Write Question Here..."
+          class="flex-1 py-2 px-2 rounded-full bg-gray-100 focus:outline-none"
+        />
+        <button type="" class="bg-green-800 text-white px-4 py-2 rounded-full ml-3 hover:bg-green-900">Send</button>
+      </div>
+
+
+     
+    </form>
+   <!-- Chat Input -->
+   
+
+    
+    <div class=" alert-dark p-2 border-0 ">
+      <h2 class="text-lg md:text-xl font-bold mb-2">Answer:</h2>
+      <h4 id="answer" class="text-green-600 text-sm md:text-base"></h4>
+     
+    </div>
+    <button
+
+      id="closeModal"
+      class="mt-4 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring focus:border-red-300"
+    >
+      Close
+    </button>
+
+  </div>
+</div>
+
+<script>
+  // JavaScript to handle modal visibility
+  const openModalBtn = document.getElementById("openModal");
+  const closeModalBtn = document.getElementById("closeModal");
+  const modal = document.getElementById("modal");
+  // const questionDisplay = document.getElementById("question");
+  const answerDisplay = document.getElementById("answer");
+
+  openModalBtn.addEventListener("click", () => {
+    document.getElementById("prompt").value = "";
+    // questionDisplay.textContent = "";
+    answerDisplay.textContent = "";
+    modal.classList.remove("hidden");
+  });
+
+  closeModalBtn.addEventListener("click", () => {
+    // Close modal
+    modal.classList.add("hidden");
+  });
+
+  // Function to handle form submission and update displays
+  const handleFormSubmission = async (event) => {
+    event.preventDefault();
+    const userQuery = document.getElementById("prompt").value;
+
+    try {
+      const response = await fetch("/googleai", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ prompt: userQuery }), // Include userQuery in the body
+      });
+      const result = await response.json();
+      // questionDisplay.textContent = `${result.prompt}`;
+      if (result.text === "undefined") {
+        questionDisplay.textContent = "Check Your Internet Connections";
+      } else {
+        answerDisplay.textContent = ` ${result.text}`;
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  document
+    .querySelector("form")
+    .addEventListener("submit", handleFormSubmission);
+
+  
+</script>

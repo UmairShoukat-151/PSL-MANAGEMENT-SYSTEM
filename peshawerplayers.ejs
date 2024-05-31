@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peshawer Players</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"
+      integrity="sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="">
+    <!-- Header Section -->
+    <%- include ('headerdark') %>
+
+    <!-- Main Content Section -->
+    <div class="container mx-auto my-10">
+      <!-- Players Heading Section -->
+      <div class="text-center">
+        <h1 class="text-3xl font-bold mb-4">Players of Peshawer Zalmi</h1>
+      </div>
+
+      <!-- Players Display Section -->
+      <div
+        class="flex zoomIn flex-wrap justify-center space-x-4"
+        id="players-container"
+      ></div>
+      <!-- ... (same as before) -->
+    </div>
+    <%- include('askquestion') %> <%- include('footer') %>
+    <!-- JavaScript Section -->
+    <script>
+      const fetchData = async () => {
+        try {
+          const response = await fetch("/peshawerplayers", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ word: "Peshawar Zalmi" }),
+          });
+
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+
+          const playersData = await response.json();
+          console.log(playersData);
+          // Create HTML cards dynamically
+          const playersContainer = document.getElementById("players-container");
+          const imageurls = [
+            "../images/players/peshawar/wahab.jpg",
+            "../images/players/peshawar/hassan.jpg",
+            "../images/players/peshawar/kieron.jpg",
+            "../images/players/peshawar/kamran.jpg",
+            "../images/players/peshawar/tom.jpg",
+            "../images/players/peshawar/shoaib.jpg",
+            "../images/players/peshawar/imam.jpg",
+            "../images/players/peshawar/darren.jpg",
+            "../images/players/peshawar/liam.jpg",
+            "../images/players/peshawar/adil.jpg",
+            "../images/profile.png",
+            "../images/players/peshawar/rahat.jpg",
+            "../images/players/peshawar/dwaine.jpg",
+            "../images/players/peshawar/mohsin.jpg",
+            "../images/players/peshawar/amir.jpg",
+            "../images/players/peshawar/liamd.jpg",
+
+            "../images/players/peshawar/haider.jpg",
+          ];
+          playersData.forEach((player, index) => {
+            const card = document.createElement("div");
+            const imageUrl = imageurls[index] || "../images/profile.png";
+            card.className =
+              "card w-1/4 m-4 overflow-hidden shadow-lg bg-gray-800 text-white";
+            card.innerHTML = `
+        <img src="${imageUrl}" class="card-img-top w-full h-48 object-cover" alt="Player Image">
+        <div class="p-6">
+          <h2 class="text-2xl font-bold mb-3">${player[1]}</h2>
+          <p class="text-sm mb-2"><b>Position:</b> ${player[2]}</p>
+          <p class="text-sm mb-2"><b>Category:</b> ${player[4]}</p>
+          <p class="text-sm mb-2"><b>Fifty in PSL:</b> (${player[6]})</p>
+          <p class="text-sm mb-2"><b>Shirt Number:</b> (${player[8]})</p>
+        </div>
+      `;
+            // If you want to add a subtle hover effect
+            card.addEventListener("mouseenter", () => {
+              card.classList.add(
+                "transform",
+                "scale-105",
+                "transition-transform"
+              );
+            });
+            card.addEventListener("mouseleave", () => {
+              card.classList.remove("transform", "scale-105");
+            });
+            // Add the card to the container
+            playersContainer.appendChild(card);
+          });
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
+      document.addEventListener("DOMContentLoaded", fetchData);
+    </script>
+  </body>
+</html>
