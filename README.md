@@ -1,4 +1,4 @@
-# 🏏 PSL Management System
+![PSL](https://github.com/user-attachments/assets/bde861dc-50fc-4819-a7a3-010a934ee154)# 🏏 PSL Management System
 
 The **PSL Management System** is a **Java-based desktop application** designed to efficiently manage **Pakistan Super League (PSL)** data, including player stats, team details, and match schedules.  
 This project was developed as a part of academic coursework for **Database Management Systems (DBMS)** and **Object-Oriented Programming (OOP)**.
@@ -32,6 +32,9 @@ This project was developed as a part of academic coursework for **Database Manag
 
 ## 📸 Preview
 ![PSL](https://github.com/user-attachments/assets/2cdeec9d-5e81-467c-a8b8-4435e6fde118)
+
+## 📸 PSL Chatbot Preview
+![PSL Chatbot](https://github.com/user-attachments/assets/64d5e3d2-fa61-4414-a7a5-9cced49b489c)
 
 
 ## 🚀 How to Run the Project
