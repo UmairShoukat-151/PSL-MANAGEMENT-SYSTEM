@@ -1,15 +1,45 @@
-**# PSL-MANAGEMENT-SYSTEM**
+# 🏏 PSL Management System
 
-The PSL Management System is a Java-based (Embedded JavaScript) application created for efficiently managing Pakistan Super League (PSL) data. Developed as part of coursework for Database Management Systems (DBMS) and Object-Oriented Programming (OOP) in Java, this project simplifies the handling of player statistics, team details, and match schedules.
+The **PSL Management System** is a **Java-based desktop application** designed to efficiently manage **Pakistan Super League (PSL)** data, including player stats, team details, and match schedules.  
+This project was developed as a part of academic coursework for **Database Management Systems (DBMS)** and **Object-Oriented Programming (OOP)**.
 
-**Features:** 
+---
 
-**Efficient Data Management:** Handles player stats, team details, and match schedules.
-**User-Friendly Interface:** Intuitive GUI for easy navigation. 
-**Security Measures:** Ensures data integrity and user authentication. 
-**Scalable Design:** Built to accommodate future expansions.
-**Technologies:** OracleSQL: Database management and storage. JavaScript & Embedded JavaScript: Graphical user interface development.
-**How to Use:** Clone the repository. Open in your Java IDE or VS code. Configure database connection settings. 
-Build and run the application. 
+## ✨ Features
 
-**Note:** Use any api integration of your choice I was using trained google chatbot.
+- 📊 **Efficient Data Management**  
+  Manage player statistics, team profiles, and match fixtures with ease.
+
+- 🖥️ **User-Friendly Interface**  
+  Intuitive GUI built using Embedded JavaScript for smooth navigation.
+
+- 🔒 **Security & Integrity**  
+  Ensures data security with user authentication and data validation.
+
+- 🚀 **Scalable Design**  
+  Easily expandable to include more teams, stats, or tournament types.
+
+---
+
+## 🛠️ Technologies Used
+
+- 🧱 **Java (OOP)** – Core language for backend logic and system design.  
+- 🖼️ **Embedded JavaScript (EJS)** – For building a dynamic and responsive interface.  
+- 🗄️ **OracleSQL** – For structured data storage and efficient querying.  
+- 🤖 **Google Chatbot API (optional)** – Used for integrating an AI assistant/chat interface (can be replaced with any API of choice).
+
+---
+
+## 📸 Preview
+![PSL](https://github.com/user-attachments/assets/2cdeec9d-5e81-467c-a8b8-4435e6fde118)
+
+
+## 🚀 How to Run the Project
+
+```bash
+1. Clone the repository
+2. Open the project in your preferred Java IDE (IntelliJ / Eclipse / VS Code)
+3. Configure your OracleSQL database connection settings
+4. Build and run the application
+
+
